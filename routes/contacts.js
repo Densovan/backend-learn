@@ -26,7 +26,7 @@ router.put("/:id", (req, res) => {
 //@desc    Delete contact
 // access  Private
 router.delete("/:id", (req, res) => {
-  res.send("u");
+  res.send("Delete contact");
 });
 
 module.exports = router;

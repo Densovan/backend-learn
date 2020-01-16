@@ -1,14 +1,18 @@
-const express = require("express");
+const express = require('express');
+const coneectDB = require('./config/db');
 
 const app = express();
 
-app.get("/", (req, res) => res.json({ msg: "Welcome to the API....." }));
+//Connect Database
+coneectDB();
+
+app.get('/', (req, res) => res.json({ msg: 'Welcome to the API.....' }));
 
 //Define Routes
 
-app.use("/api/users", require("./routes/users"));
-app.use("/api/auth", require("./routes/auth"));
-app.use("/api/contacts", require("./routes/contacts"));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/contacts', require('./routes/contacts'));
 
 const PORT = process.env.PORT || 5000;
 

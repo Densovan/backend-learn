@@ -1,7 +1,7 @@
-import React, { useReducer } from "react";
-import uuid from "uuid";
-import ContactContext from "./contactContext";
-import contactRecuder from "./contactReducer";
+import React, { useReducer } from 'react';
+import uuid from 'uuid';
+import ContactContext from './contactContext';
+import contactRecuder from './contactReducer';
 import {
   GET_CONTACTS,
   ADD_CONTACT,
@@ -13,33 +13,34 @@ import {
   CLEAR_CONTACTS,
   CLEAR_FILTER,
   CONTACT_ERROR
-} from "../types";
+} from '../types';
 
 const ContactState = props => {
   const initialState = {
     contacts: [
       {
         id: 1,
-        name: "Sara Watson",
-        email: "sara@gmail.com",
-        phone: "222-222-222",
-        type: "personal"
+        name: 'Sara Watson',
+        email: 'sara@gmail.com',
+        phone: '222-222-222',
+        type: 'personal'
       },
       {
         id: 2,
-        name: "Jill Johnson",
-        email: "jill@gmail.com",
-        phone: "111-111-111",
-        type: "personal"
+        name: 'Jill Johnson',
+        email: 'jill@gmail.com',
+        phone: '111-111-111',
+        type: 'personal'
       },
       {
         id: 3,
-        name: "Harry White",
-        email: "harrywhite@gmail.com",
-        phone: "333-333-333",
-        type: "professional"
+        name: 'Harry White',
+        email: 'harrywhite@gmail.com',
+        phone: '333-333-333',
+        type: 'professional'
       }
-    ]
+    ],
+    current: null
   };
   const [state, dispatch] = useReducer(contactRecuder, initialState);
 
@@ -50,11 +51,17 @@ const ContactState = props => {
   };
 
   // Delete Contact
-
+  const deleteContact = id => {
+    dispatch({ type: DELETE_CONTACT, payload: id });
+  };
   // Set Current Contact
-
+  const setCurrent = contact => {
+    dispatch({ type: SET_CURRENT, payload: contact });
+  };
   // Clear Current Contact
-
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
   // Update Contact
 
   // Filter Contact
@@ -65,7 +72,11 @@ const ContactState = props => {
     <ContactContext.Provider
       value={{
         contacts: state.contacts,
-        addContact
+        current: state.current,
+        addContact,
+        deleteContact,
+        setCurrent,
+        clearCurrent
       }}
     >
       {props.children}

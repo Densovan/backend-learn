@@ -36,7 +36,6 @@ const ContactItem = ({ contact }) => {
             <li>
               <i className="fas fa-phone" /> {phone}
             </li>
-            {phone}
           </li>
         )}
       </ul>

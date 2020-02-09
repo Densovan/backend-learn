@@ -1,11 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function Navbar({ title }) {
   return (
     <div className="navbar bg-primary">
-      <h1>{title}</h1>
+      <h1>
+        <i class="fas fa-address-book"></i>
+        {title}
+      </h1>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -23,7 +26,7 @@ Navbar.prototype = {
 };
 
 Navbar.defaultProps = {
-  title: "Contact Keeper"
+  title: 'Contact Keeper'
 };
 
 export default Navbar;

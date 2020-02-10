@@ -14,7 +14,6 @@ const ContactItem = ({ contact }) => {
     <div className="card bg-light">
       <h3 className="text-primary text-left">
         {name}
-        {''}
         <span
           style={{ float: 'right' }}
           className={
